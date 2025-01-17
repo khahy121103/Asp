@@ -1,0 +1,120 @@
+﻿@model IEnumerable<VoPhanKhaHy_2122110243.Context.User>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<style>
+    /* Styling for the main table */
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 20px 0;
+        font-size: 16px;
+        text-align: left;
+        background-color: #fdfdfd;
+        box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+        border-radius: 8px;
+        overflow: hidden;
+    }
+
+    th {
+        background-color: #4CAF50;
+        color: white;
+        padding: 12px;
+        text-align: center;
+        font-weight: bold;
+    }
+
+    td {
+        padding: 12px;
+        border-bottom: 1px solid #ddd;
+        text-align: center;
+    }
+
+    /* Alternating row colors */
+    tr:nth-child(even) {
+        background-color: #f9f9f9;
+    }
+
+    tr:hover {
+        background-color: #f1f1f1;
+        cursor: pointer;
+    }
+
+    /* Buttons styling */
+    a {
+        color: #4CAF50;
+        text-decoration: none;
+        font-weight: bold;
+        padding: 6px 12px;
+        border: 1px solid #4CAF50;
+        border-radius: 4px;
+        transition: all 0.3s ease-in-out;
+    }
+
+        a:hover {
+            background-color: #4CAF50;
+            color: white;
+        }
+
+    /* Title styling */
+    h2 {
+        font-size: 24px;
+        color: #333;
+        margin-bottom: 20px;
+    }
+
+    /* Create button */
+    p > a {
+        color: white;
+        background-color: #4CAF50;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 4px;
+        text-decoration: none;
+        font-size: 16px;
+        font-weight: bold;
+        transition: background-color 0.3s ease-in-out;
+    }
+
+        p > a:hover {
+            background-color: #45a049;
+        }
+</style>
+
+<h2>Quản lý Người dùng</h2>
+
+<p>
+    @Html.ActionLink("Tạo mới", "Create", null, new { @class = "btn btn-primary" })
+</p>
+
+<table>
+    <thead>
+        <tr>
+            <th>@Html.DisplayNameFor(model => model.FirstOrDefault().FirstName)</th>
+            <th>@Html.DisplayNameFor(model => model.FirstOrDefault().LastName)</th>
+            <th>@Html.DisplayNameFor(model => model.FirstOrDefault().Email)</th>
+            <th>@Html.DisplayNameFor(model => model.FirstOrDefault().Password)</th>
+            <th>@Html.DisplayNameFor(model => model.FirstOrDefault().IsAdmin)</th>
+            <th>Hành động</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@Html.DisplayFor(modelItem => item.FirstName)</td>
+                <td>@Html.DisplayFor(modelItem => item.LastName)</td>
+                <td>@Html.DisplayFor(modelItem => item.Email)</td>
+                <td>@Html.DisplayFor(modelItem => item.Password)</td>
+                <td>@Html.DisplayFor(modelItem => item.IsAdmin)</td>
+                <td>
+                    @Html.ActionLink("Chỉnh sửa", "Edit", new { id = item.Id }) |
+                    @Html.ActionLink("Xóa", "Delete", new { id = item.Id })
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

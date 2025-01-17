@@ -1,0 +1,153 @@
+﻿@{
+    ViewBag.Title = "Admin Dashboard";
+}
+
+<!-- Tiêu đề Trang -->
+<div class="content-header py-4 bg-primary text-white shadow">
+    <div class="container-fluid">
+        <div class="row align-items-center">
+            <div class="col-md-6">
+                <h1 class="m-0">Bảng Điều Khiển Quản Trị</h1>
+                <p class="text-light">Quản lý website của bạn hiệu quả với các công cụ mạnh mẽ.</p>
+            </div>
+            <div class="col-md-6 text-md-end">
+                <ol class="breadcrumb bg-transparent p-0 mb-0">
+                    <li class="breadcrumb-item">
+                        <a href="~/Admin/Home/AdminIndex" class="text-white">
+                            <i class="fas fa-home"></i> Trang chủ
+                        </a>
+                    </li>
+                    <li class="breadcrumb-item text-white active" aria-current="page">Bảng Điều Khiển</li>
+                </ol>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Nội dung chính -->
+<div class="container my-5">
+    <div class="row">
+        <!-- Thẻ Liên Kết Nhanh -->
+        <div class="col-md-4 mb-4">
+            <div class="card shadow-sm">
+                <div class="card-body text-center">
+                    <i class="fas fa-users fa-3x text-primary mb-3"></i>
+                    <h5 class="card-title">Quản Lý Người Dùng</h5>
+                    <p class="card-text">Thêm, chỉnh sửa hoặc xóa người dùng.</p>
+                    <a href="~/Admin/User/Index" class="btn btn-primary">
+                        <i class="fas fa-arrow-right"></i> Đến Người Dùng
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4 mb-4">
+            <div class="card shadow-sm">
+                <div class="card-body text-center">
+                    <i class="fas fa-box fa-3x text-success mb-3"></i>
+                    <h5 class="card-title">Quản Lý Sản Phẩm</h5>
+                    <p class="card-text">Xem và cập nhật thông tin sản phẩm.</p>
+                    <a href="~/Admin/Product/Index" class="btn btn-success">
+                        <i class="fas fa-arrow-right"></i> Đến Sản Phẩm
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4 mb-4">
+            <div class="card shadow-sm">
+                <div class="card-body text-center">
+                    <i class="fas fa-file-invoice-dollar fa-3x text-warning mb-3"></i>
+                    <h5 class="card-title">Quản Lý Đơn Hàng</h5>
+                    <p class="card-text">Theo dõi và xử lý đơn hàng của khách hàng.</p>
+                    <a href="~/Admin/Orders/Index" class="btn btn-warning text-white">
+                        <i class="fas fa-arrow-right"></i> Đến Đơn Hàng
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4 mb-4">
+            <div class="card shadow-sm">
+                <div class="card-body text-center">
+                    <i class="fas fa-cogs fa-3x text-info mb-3"></i>
+                    <h5 class="card-title">Quản Lý Danh Mục</h5>
+                    <p class="card-text">Thêm và cập nhật danh mục sản phẩm.</p>
+                    <a href="~/Admin/Category/Index" class="btn btn-info text-white">
+                        <i class="fas fa-arrow-right"></i> Đến Danh Mục
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4 mb-4">
+            <div class="card shadow-sm">
+                <div class="card-body text-center">
+                    <i class="fas fa-tag fa-3x text-secondary mb-3"></i>
+                    <h5 class="card-title">Quản Lý Thương Hiệu</h5>
+                    <p class="card-text">Thêm và cập nhật thương hiệu sản phẩm.</p>
+                    <a href="~/Admin/Brand/Index" class="btn btn-secondary text-white">
+                        <i class="fas fa-arrow-right"></i> Đến Thương Hiệu
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Phần Thống Kê -->
+    <div class="row mt-4">
+        <div class="col-md-6">
+            <div class="card shadow-sm">
+                <div class="card-header bg-info text-white">
+                    <h5 class="card-title mb-0">Doanh Thu Hàng Tháng</h5>
+                </div>
+                <div class="card-body">
+                    <canvas id="revenueChart"></canvas>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-6">
+            <div class="card shadow-sm">
+                <div class="card-header bg-danger text-white">
+                    <h5 class="card-title mb-0">Người Dùng Mới</h5>
+                </div>
+                <div class="card-body">
+                    <canvas id="usersChart"></canvas>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Script Chart.js -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+    const ctxRevenue = document.getElementById('revenueChart').getContext('2d');
+    new Chart(ctxRevenue, {
+        type: 'line',
+        data: {
+            labels: ['Tháng 1', 'Tháng 2', 'Tháng 3', 'Tháng 4', 'Tháng 5'],
+            datasets: [{
+                label: 'Doanh Thu ($)',
+                data: [12000, 15000, 17000, 14000, 19000],
+                borderColor: '#17a2b8',
+                fill: false
+            }]
+        }
+    });
+
+    const ctxUsers = document.getElementById('usersChart').getContext('2d');
+    new Chart(ctxUsers, {
+        type: 'bar',
+        data: {
+            labels: ['Tháng 1', 'Tháng 2', 'Tháng 3', 'Tháng 4', 'Tháng 5'],
+            datasets: [{
+                label: 'Người Dùng Mới',
+                data: [200, 300, 250, 400, 350],
+                backgroundColor: '#dc3545'
+            }]
+        }
+    });
+</script>
+

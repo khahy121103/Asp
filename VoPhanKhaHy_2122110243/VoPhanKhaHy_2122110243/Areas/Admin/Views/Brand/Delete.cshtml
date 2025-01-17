@@ -1,0 +1,93 @@
+﻿@model VoPhanKhaHy_2122110243.Context.Brand
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<h2 class="text-danger">Xóa Thương Hiệu</h2>
+
+<div class="alert alert-warning">
+    <h4><i class="fas fa-exclamation-triangle"></i> Bạn có chắc chắn muốn xóa thương hiệu này không?</h4>
+    <p>Hành động này không thể hoàn tác.</p>
+</div>
+
+<div class="card">
+    <div class="card-header bg-danger text-white">
+        <h5>Chi tiết Thương Hiệu</h5>
+    </div>
+    <div class="card-body">
+        <dl class="row">
+            <dt class="col-sm-3 font-weight-bold">
+                @Html.DisplayNameFor(model => model.Name)
+            </dt>
+            <dd class="col-sm-9">
+                @Html.DisplayFor(model => model.Name)
+            </dd>
+
+            <dt class="col-sm-3 font-weight-bold">
+                @Html.DisplayNameFor(model => model.Avartar)
+            </dt>
+            <dd class="col-sm-9">
+                @Html.DisplayFor(model => model.Avartar)
+            </dd>
+
+            <dt class="col-sm-3 font-weight-bold">
+                @Html.DisplayNameFor(model => model.Slug)
+            </dt>
+            <dd class="col-sm-9">
+                @Html.DisplayFor(model => model.Slug)
+            </dd>
+
+            <dt class="col-sm-3 font-weight-bold">
+                @Html.DisplayNameFor(model => model.ShowOnHomePage)
+            </dt>
+            <dd class="col-sm-9">
+                @Html.DisplayFor(model => model.ShowOnHomePage)
+            </dd>
+
+            <dt class="col-sm-3 font-weight-bold">
+                @Html.DisplayNameFor(model => model.DisplayOrder)
+            </dt>
+            <dd class="col-sm-9">
+                @Html.DisplayFor(model => model.DisplayOrder)
+            </dd>
+
+            @*<dt class="col-sm-3 font-weight-bold">
+                @Html.DisplayNameFor(model => model.CreatedOnUtc)
+            </dt>
+            <dd class="col-sm-9">
+                @Html.DisplayFor(model => model.CreatedOnUtc)
+            </dd>
+
+            <dt class="col-sm-3 font-weight-bold">
+                @Html.DisplayNameFor(model => model.UpdatedOnUtc)
+            </dt>
+            <dd class="col-sm-9">
+                @Html.DisplayFor(model => model.UpdatedOnUtc)
+            </dd>*@
+
+            <dt class="col-sm-3 font-weight-bold">
+                @Html.DisplayNameFor(model => model.Deleted)
+            </dt>
+            <dd class="col-sm-9">
+                @Html.DisplayFor(model => model.Deleted)
+            </dd>
+        </dl>
+    </div>
+</div>
+
+<div class="mt-4 text-center">
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+        <div class="form-actions no-color">
+            <button type="submit" class="btn btn-danger">
+                <i class="fas fa-trash-alt"></i> Xác nhận Xóa
+            </button>
+            <a href="@Url.Action("Index", "Brand")" class="btn btn-secondary">
+                <i class="fas fa-arrow-left"></i> Quay lại Danh sách
+            </a>
+        </div>
+    }
+</div>

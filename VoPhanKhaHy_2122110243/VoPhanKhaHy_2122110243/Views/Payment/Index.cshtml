@@ -1,0 +1,21 @@
+﻿@{
+    ViewBag.Title = "Thanh toán thành công";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<section class="section-content padding-y">
+    <div class="container text-center mt-5">
+        <div class="card shadow-lg border-0">
+            <div class="card-body">
+                <h2 class="text-success mb-4"><i class="fa fa-check-circle"></i> Thanh toán thành công!</h2>
+                <p class="text-muted mb-4">Cảm ơn bạn đã mua sắm tại cửa hàng của chúng tôi. Đơn hàng của bạn đã được xử lý thành công.</p>
+                <a href="@Url.Action("Index", "Home")" class="btn btn-primary btn-lg">
+                    <i class="fa fa-shopping-cart"></i> Tiếp tục mua sắm
+                </a>
+            </div>
+        </div>
+        <div class="mt-4">
+            <img src="~/Content/images/misc/success.png" alt="Thanh toán thành công" class="img-fluid" style="max-width: 200px;">
+        </div>
+    </div>
+</section>
